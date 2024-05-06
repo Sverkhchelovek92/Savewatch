@@ -6,6 +6,8 @@ const stopBtn = document.querySelector("#stopBtn");
 const resetBtn = document.querySelector("#resetBtn");
 const saveBtn = document.querySelector("#saveBtn");
 
+const clearBtn = document.querySelector("#clearBtn");
+
 let timer = null;
 let startTime = 0;
 let elapsedTime = 0;
@@ -76,6 +78,7 @@ function addTime() {
   const timeSaved = display.textContent;
 
   createSavedTime(timeSaved);
+  visibleClear();
 }
 
 saveBtn.addEventListener("click", addTime);
@@ -95,5 +98,25 @@ function createSavedTime(time) {
 
   delBtn.addEventListener("click", function () {
     savedTimes.removeChild(listTime);
+    visibleClear();
   });
 }
+
+// Clear All
+
+function clearAll() {
+  savedTimes.innerHTML = "";
+  visibleClear();
+}
+
+clearBtn.addEventListener("click", clearAll);
+
+function visibleClear() {
+  if (savedTimes.childNodes.length === 0) {
+    clearBtn.classList.add("unvisible");
+  } else {
+    clearBtn.classList.remove("unvisible");
+  }
+}
+
+visibleClear();

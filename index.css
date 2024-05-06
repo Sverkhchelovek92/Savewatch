@@ -76,3 +76,11 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
+.unvisible {
+  opacity: 0;
+}
+
+.unvisible:hover {
+  opacity: 0;
+}
